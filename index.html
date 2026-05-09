@@ -962,51 +962,54 @@
         });
 
         // Form submission handler
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            const form = document.getElementById('contactForm');
-            const formData = new FormData(form);
-            const successMsg = document.getElementById('formSuccess');
-            
-            // Validate form
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value.trim();
-            const message = document.getElementById('message').value.trim();
+       function handleFormSubmit(event) {
+			event.preventDefault();
+			
+			const form = document.getElementById('contactForm');
+			const name = document.getElementById('name').value.trim();
+			const email = document.getElementById('email').value.trim();
+			const subject = document.getElementById('subject').value.trim();
+			const message = document.getElementById('message').value.trim();
+			const successMsg = document.getElementById('formSuccess');
 
-            if (!name || !email || !subject || !message) {
-                alert('Please fill in all fields');
-                return;
-            }
+			// Validate form
+			if (!name || !email || !subject || !message) {
+				alert('Please fill in all fields');
+				return;
+			}
 
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address');
-                return;
-            }
+			// Email validation
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			if (!emailRegex.test(email)) {
+				alert('Please enter a valid email address');
+				return;
+			}
 
-            // TODO: Replace with actual email service (Resend, EmailJS, etc.)
-            // For now, just show success message
-            console.log('Form submitted:', {
-                name,
-                email,
-                subject,
-                message
-            });
+			// Send email via EmailJS
+			emailjs.send('service_m4ym9hm', 'template_09ni7sd', {
+				from_name: name,
+				from_email: email,
+				subject: subject,
+				message: message,
+				to_email: 'info@asteriaforge.com'
+				}).then(function(response) {
+					console.log('Email sent successfully!', response.status);
+					// Show success message
+					form.style.display = 'none';
+					successMsg.style.display = 'block';
 
-            // Show success message
-            form.style.display = 'none';
-            successMsg.style.display = 'block';
+					// Reset form after 3 seconds
+					setTimeout(() => {
+						form.reset();
+						form.style.display = 'block';
+						successMsg.style.display = 'none';
+					}, 3000);
+				}, function(error) {
+					console.error('Failed to send email:', error);
+					alert('Failed to send email. Please try again.');
+			});
+		}
 
-            // Reset form
-            setTimeout(() => {
-                form.reset();
-                form.style.display = 'block';
-                successMsg.style.display = 'none';
-            }, 3000);
-        }
 
         // Scroll animation observer
         const observerOptions = {
