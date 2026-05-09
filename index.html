@@ -11,6 +11,7 @@
     <title>Asteria Forge - Build Once, Last Forever</title>
     <!-- Google Fonts: Barlow Condensed -->
 	<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
 
     <style>
         * {
@@ -940,6 +941,9 @@
     </footer>
 
     <script>
+        // Initialize EmailJS
+        emailjs.init('g4bDU3VlW8ZXp_d3p');
+		
         // Email obfuscation and display
         function showEmail() {
             const email = 'info@asteriaforge.com';
@@ -1004,9 +1008,9 @@
 						form.style.display = 'block';
 						successMsg.style.display = 'none';
 					}, 3000);
-				}, function(error) {
-					console.error('Failed to send email:', error);
-					alert('Failed to send email. Please try again.');
+			}, function(error) {
+				console.error('Failed to send email:', error);
+				alert('Failed to send email. Please try again.');
 			});
 		}
 
