@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Asteria Forge - Building reliable software tools that last. Efficient, simple, and built for quality.">
+    <meta name="theme-color" content="#0D1B2A">
+    <meta property="og:title" content="Asteria Forge - Build Once, Last Forever">
+    <meta property="og:description" content="Discover reliable software tools built for teams that value quality and longevity.">
+    <meta property="og:type" content="website">
+    <title>Asteria Forge - Build Once, Last Forever</title>
+    <!-- Google Fonts: Barlow Condensed -->
+	<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-cyan: #00d4ff;
+            --bg-cosmic: #0D1B2A;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-tertiary: #999999;
+            --border-cyan: #00d4ff;
+            --success-green: #00ff88;
+            --disabled-gray: #555555;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+            background-color: var(--bg-cosmic);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ======================== NAVBAR ======================== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 60px;
+			background: var(--bg-cosmic);
+            border-bottom: 1px solid var(--primary-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
+        }
+
+        .nav-logo img {
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.3));
+        }
+
+        .nav-logo svg {
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.3));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-cyan);
+        }
+
+        .nav-cta {
+            background: var(--primary-cyan);
+            color: var(--bg-cosmic);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+        }
+
+        .nav-cta:hover {
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            transform: scale(1.02);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--primary-cyan);
+            transition: all 0.3s ease;
+        }
+
+        /* ======================== HERO SECTION ======================== */
+        .hero {
+            margin-top: 60px;
+            min-height: 650px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-cosmic);
+            animation: fadeIn 1s ease-in;
+        }
+
+        .hero-star {
+            width: 250px;
+            height: 250px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+            animation: starPulse 4s ease-in-out infinite;
+            object-fit: contain;
+        }
+
+        @keyframes starPulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+            }
+            50% {
+                filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.6));
+            }
+        }
+
+        .hero-brand {
+            font-size: clamp(28px, 6vw, 80px);
+            color: var(--primary-cyan);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            margin-top: 0.0rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            line-height: 1.2;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-tagline-main {
+			font-size: clamp(18px, 4vw, 28px);
+            color: var(--primary-cyan);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 200;
+            margin-bottom: 2rem;
+            letter-spacing: 11px;
+            text-transform: uppercase;
+            line-height: 1.3;
+            animation: slideUp 0.8s ease-out 0.3s both;
+        }
+
+        .hero-description {
+            font-size: clamp(14px, 2.5vw, 16px);
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            color: var(--primary-cyan);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-tagline {
+            font-size: clamp(15px, 3vw, 17px);
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-cta {
+            background: var(--primary-cyan);
+            color: var(--bg-cosmic);
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+            animation: slideUp 0.8s ease-out 0.6s both;
+        }
+
+        .hero-cta:hover {
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+            transform: scale(1.02);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ======================== SECTIONS ======================== */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        section h2 {
+            font-size: clamp(28px, 4vw, 32px);
+            color: var(--primary-cyan);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ======================== ABOUT SECTION ======================== */
+        .about {
+            background-color: var(--bg-cosmic);
+        }
+
+        .about-content {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-story {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .values-grid {
+            display: grid;
+            text-align: center;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .value-card h3 {
+            color: var(--primary-cyan);
+            font-size: 18px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .value-card p {
+            color: var(--text-tertiary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ======================== PRODUCTS SECTION ======================== */
+        .products {
+            background-color: var(--bg-cosmic);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(10, 14, 39, 0.5) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .product-name {
+            font-size: 22px;
+            color: var(--primary-cyan);
+            font-weight: 700;
+        }
+
+        .product-badge {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-live {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--success-green);
+            border: 1px solid var(--success-green);
+        }
+
+        .badge-soon {
+            background: rgba(85, 85, 85, 0.2);
+            color: var(--disabled-gray);
+            border: 1px solid var(--disabled-gray);
+        }
+
+        .product-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            color: var(--text-tertiary);
+            font-size: 13px;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .product-features li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-cyan);
+        }
+
+        .product-btn {
+            background: var(--primary-cyan);
+            color: var(--bg-cosmic);
+            padding: 10px 16px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .product-btn:hover {
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+            transform: scale(1.02);
+        }
+
+        .product-btn:disabled {
+            background: var(--disabled-gray);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* ======================== CONTACT SECTION ======================== */
+        .contact {
+            background-color: var(--bg-cosmic);
+        }
+
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-message {
+            color: var(--text-secondary);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .contact-form-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-cyan);
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background: var(--primary-cyan);
+            color: var(--bg-cosmic);
+            padding: 12px 32px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+        }
+
+        .form-submit:hover {
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.5);
+            transform: scale(1.01);
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            color: var(--success-green);
+            padding: 1rem;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--success-green);
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        /* ======================== FOOTER ======================== */
+        footer {
+			background: var(--bg-cosmic);
+            border-top: 1px solid var(--primary-cyan);
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--primary-cyan);
+            font-size: 14px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            color: var(--text-tertiary);
+            font-size: 13px;
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary-cyan);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            color: var(--text-tertiary);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .footer-legal {
+            color: var(--text-tertiary);
+            font-size: 11px;
+            margin-top: 1rem;
+        }
+
+        /* ======================== RESPONSIVE ======================== */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-mobile-menu {
+                position: fixed;
+                left: -100%;
+                top: 60px;
+                flex-direction: column;
+                background: var(--bg-cosmic);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                z-index: 999;
+                border-bottom: 1px solid var(--primary-cyan);
+            }
+
+            .nav-mobile-menu.active {
+                left: 0;
+            }
+
+            .nav-mobile-menu a {
+                padding: 1rem;
+                display: block;
+                color: var(--text-secondary);
+                text-decoration: none;
+                border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            }
+
+            .hero {
+                min-height: 500px;
+                padding: 30px 20px;
+            }
+
+            .hero-star {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 1.5rem;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .nav-logo {
+                font-size: 14px;
+            }
+
+            .hero {
+                min-height: 450px;
+                padding: 20px;
+            }
+
+            .hero h1 {
+                margin-bottom: 1rem;
+            }
+
+            .hero-brand {
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
+                letter-spacing: 1.5px;
+            }
+
+            .hero-tagline-main {
+                margin-bottom: 1.5rem;
+                letter-spacing: 2.5px;
+            }
+
+            .hero-description {
+                margin-bottom: 1.5rem;
+                font-size: 13px;
+            }
+
+            .hero-tagline {
+                margin-bottom: 1.5rem;
+                font-size: 14px;
+            }
+
+            .hero-star {
+                width: 100px;
+                height: 100px;
+            }
+
+            section {
+                padding: 40px 16px;
+            }
+
+            section h2 {
+                font-size: 24px;
+                margin-bottom: 2rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ======================== SCROLL ANIMATIONS ======================== */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- ======================== NAVBAR ======================== -->
+    <nav>
+        <a href="#home" class="nav-logo">
+            <img src="images/ASTERIAFORGE_Logo_NoBackgd.png" alt="Asteria Forge Logo" class="nav-logo-img">
+            ASTERIA FORGE
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get in Touch</button>
+
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="nav-mobile-menu" id="mobileMenu">
+        <a href="#home" onclick="toggleMobileMenu()">Home</a>
+        <a href="#about" onclick="toggleMobileMenu()">About</a>
+        <a href="#products" onclick="toggleMobileMenu()">Products</a>
+        <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <!-- ======================== HERO SECTION ======================== -->
+    <section class="hero" id="home">
+        <img src="images/ASTERIAFORGE_Logo_NoBackgd.png" alt="Asteria Forge Logo" class="hero-star">
+        
+        <h2 class="hero-brand">ASTERIA FORGE</h2>
+        <div class="hero-tagline-main">BUILD ONCE — LAST FOREVER</div>
+        
+        <p class="hero-description">We build software you can trust. No unnecessary features. No surprise breakdowns. Just reliable tools that stay simple, stay stable, and stay relevant as your business evolves.</p>
+        <button class="hero-cta" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Explore Our Work</button>
+    </section>
+
+    <!-- ======================== ABOUT SECTION ======================== -->
+    <section class="about" id="about">
+        <h2>About us</h2>
+        
+        <div class="about-content">
+            <p class="about-story scroll-fade">
+                Asteria Forge builds software that lasts. We focus on reliability, 
+				clarity, and longevity, creating tools that solve real problems without 
+				unnecessary complexity.<br>While other companies chase trends, we build 
+				foundations.<br>Great software should fade into the background 
+				and let your business shine.
+            </p>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card scroll-fade">
+                <h3>Reliability</h3>
+                <p>Products built to last and requiring no maintenance</p>
+            </div>
+            <div class="value-card scroll-fade">
+                <h3>Simplicity</h3>
+                <p>Clean design, powerful functionality</p>
+            </div>
+            <div class="value-card scroll-fade">
+                <h3>Transparency</h3>
+                <p>Open communication with our users and community</p>
+            </div>
+            <div class="value-card scroll-fade">
+                <h3>Craftsmanship</h3>
+                <p>Every detail matters</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== PRODUCTS SECTION ======================== -->
+    <section class="products" id="products">
+        <h2>Our Products</h2>
+        
+        <div class="products-grid">
+            <!-- cronme.io Card -->
+            <div class="product-card scroll-fade">
+                <div class="product-header">
+                    <div class="product-name">cronme.io</div>
+                    <span class="product-badge badge-live">LIVE ✓</span>
+                </div>
+                <p class="product-desc">
+                    Reliable cron job scheduling and monitoring for modern teams. Schedule HTTP-based cron jobs and monitor existing background tasks via heartbeat pings: when a job fails or runs late, it fires instant alerts via Slack, email, SMS, or PagerDuty. Manage all your cron jobs with confidence.
+                </p>
+                <ul class="product-features">
+                    <li>Real-time monitoring and alerting</li>
+                    <li>One-click Cronhub migration</li>
+                    <li>Built-in email notifications</li>
+                    <li>Team collaboration and permissions</li>
+                </ul>
+                <a href="https://cronme.io/" target="_blank" rel="noopener noreferrer" class="product-btn">Visit cronme.io</a>
+            </div>
+
+            <!-- Coming Soon Card 1 
+            <div class="product-card scroll-fade">
+                <div class="product-header">
+                    <div class="product-name">Product 2</div>
+                    <span class="product-badge badge-soon">Coming Soon</span>
+                </div>
+                <p class="product-desc">
+                    Something innovative is being crafted. Stay tuned for our next product launch.
+                </p>
+                <ul class="product-features">
+                    <li>Feature in development</li>
+                    <li>Feature in development</li>
+                    <li>Feature in development</li>
+                </ul>
+                <button class="product-btn" disabled>Notify Me</button>
+            </div>-->
+
+            <!-- Coming Soon Card 2 
+            <div class="product-card scroll-fade">
+                <div class="product-header">
+                    <div class="product-name">Product 3</div>
+                    <span class="product-badge badge-soon">Coming Soon</span>
+                </div>
+                <p class="product-desc">
+                    We're building the next generation of tools for forward-thinking teams. Details coming soon.
+                </p>
+                <ul class="product-features">
+                    <li>Feature in development</li>
+                    <li>Feature in development</li>
+                    <li>Feature in development</li>
+                </ul>
+                <button class="product-btn" disabled>Notify Me</button>
+            </div>-->
+        </div>
+    </section>
+
+    <!-- ======================== CONTACT SECTION ======================== -->
+    <section class="contact" id="contact">
+        <h2>Get In Touch</h2>
+        
+        <div class="contact-intro">
+            <p class="contact-message">Have a question about our products or want to explore a partnership? We'd love to hear from you.</p>
+        </div>
+
+        <div class="contact-form-wrapper">
+            <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="How can we help?" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Send Message</button>
+                <div class="form-success" id="formSuccess">✓ Thank you! We'll get back to you shortly.</div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ======================== FOOTER ======================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Company</h4>
+                <p>ASTERIA FORGE SAS</p>
+                <p>61 rue de Lyon</p>
+                <p>75012 Paris, FRANCE</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#products">Products</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <p>Email: <span id="emailDisplay"></span></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 ASTERIA FORGE. All Rights Reserved.</p>
+            <div class="footer-legal">
+                <p>ASTERIA FORGE SAS | Capital: €10,000 | Registered in France | SIRET: [Coming Soon]</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Email obfuscation and display
+        function showEmail() {
+            const email = 'info@asteriaforge.com';
+            document.getElementById('emailDisplay').textContent = email;
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const menu = document.getElementById('mobileMenu');
+            if (!nav.contains(event.target) && menu.classList.contains('active')) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // Form submission handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('contactForm');
+            const formData = new FormData(form);
+            const successMsg = document.getElementById('formSuccess');
+            
+            // Validate form
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            // TODO: Replace with actual email service (Resend, EmailJS, etc.)
+            // For now, just show success message
+            console.log('Form submitted:', {
+                name,
+                email,
+                subject,
+                message
+            });
+
+            // Show success message
+            form.style.display = 'none';
+            successMsg.style.display = 'block';
+
+            // Reset form
+            setTimeout(() => {
+                form.reset();
+                form.style.display = 'block';
+                successMsg.style.display = 'none';
+            }, 3000);
+        }
+
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-fade elements
+        document.querySelectorAll('.scroll-fade').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Display email on page load (after DOM loads)
+        document.addEventListener('DOMContentLoaded', showEmail);
+    </script>
+</body>
+</html>
